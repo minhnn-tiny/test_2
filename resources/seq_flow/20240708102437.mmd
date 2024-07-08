@@ -1,0 +1,15 @@
+
+sequenceDiagram
+    participant M as Main
+    participant T as Timer
+    participant U as UI
+    participant N as Notifications
+    participant D as Database
+    M->>U: initialize_ui()
+    U->>T: set_intervals(work, break)
+    U->>T: start_timer()
+    T-->>U: update_timer_display(time)
+    T-->>N: send_notification(message)
+    N-->>U: show_notification(message)
+    U->>D: insert_session(session_data)
+    D-->>U: fetch_sessions()

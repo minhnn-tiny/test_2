@@ -1,0 +1,30 @@
+
+classDiagram
+    class Timer {
+        -int work_interval
+        -int break_interval
+        -int current_time
+        +start_timer() void
+        +stop_timer() void
+        +reset_timer() void
+        +set_intervals(work: int, break: int) void
+    }
+    class UI {
+        -Timer timer
+        +display_timer() void
+        +update_timer_display(time: int) void
+        +show_notification(message: str) void
+        +get_user_intervals() tuple
+    }
+    class Notifications {
+        +send_notification(message: str) void
+    }
+    class Database {
+        +connect() void
+        +create_table() void
+        +insert_session(session_data: dict) void
+        +fetch_sessions() list
+    }
+    Timer --> UI
+    UI --> Notifications
+    UI --> Database
